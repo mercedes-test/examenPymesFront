@@ -1,0 +1,173 @@
+<h4>Editar Perfil</h4>
+<button [routerLink] ="['perfiles']"
+        class ="btn btn-outline-danger">
+        Regresar
+</button>
+<hr>
+
+<div class="row" animated fadeIn fast>
+   <div class="col-md-12">
+     <form  (ngSubmit)="actualizar()"  #forma="ngForm">
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Id</label>
+            <div class="col-8">
+      
+              <input  [(ngModel)] = "perfil.id" [readonly]="true"
+                    class="form-control"
+                     type="text"
+                     placeholder="Id"
+                     name="id"
+                     ng-model
+                     required>
+            </div>
+        </div>
+        <div class="form-group row" [ngClass]= "{'has-danger':
+        (foto.errors?.required) && foto.touched}">
+                    <label class="col-2 col-form-label">Foto</label>
+                    <div class="col-8">
+              
+                      <input [(ngModel)] = "perfil.foto"
+                             class="form-control"
+                             type="text"
+                             placeholder="Foto"
+                             name="foto"
+                             ng-model
+                             required
+                             #foto="ngModel">  
+                             <div class="form-control-feedback" *ngIf="foto.errors?.required">
+                                <span >Este campo es requerido</span> 
+                             </div>   
+                    </div>
+                </div>
+        <div class="form-group row " [ngClass]= "{'has-danger':
+                (nombre.errors?.required || nombre.errors?.maxlength || nombre.errors?.pattern) && nombre.touched}">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+              <input [(ngModel)] = "perfil.nombre"
+                    class="form-control"
+                     type="text"
+                     placeholder="Nombre"
+                     name="nombre"
+                     ng-model
+                     pattern ="^[a-zA-Z\s]*$"                     
+                     maxlength="15"
+                     required 
+                     #nombre="ngModel">  
+                     <div class="form-control-feedback" *ngIf="nombre.errors?.required">
+                        <span >Este campo es requerido</span> 
+                     </div>
+                     <div  class="form-control-feedback" *ngIf="nombre.errors?.maxlength">
+                        <span>El maximo de caracteres requeridos 15</span> 
+                     </div>
+                     <div  class="form-control-feedback" *ngIf="nombre.errors?.pattern">
+                        <span>Solo se permiten letras Mayusculas y Minusculas</span> 
+                     </div>  
+            </div>
+        </div>
+        <div class="form-group row" [ngClass]= "{'has-danger':
+        (apellidoPaterno.errors?.required || apellidoPaterno.errors?.maxlength || apellidoPaterno.errors?.pattern) && apellidoPaterno.touched}">
+            <label class="col-2 col-form-label">Apellido Paterno</label>
+            <div class="col-8">
+      
+              <input [(ngModel)] = "perfil.apellidoPaterno"
+                     class="form-control"
+                     type="text"
+                     placeholder="Apellido Paterno"
+                     name="apellidoPaterno"
+                     ng-model
+                     maxlength="15"
+                     pattern ="^[a-zA-Z\s]*$"                                          
+                     required  
+                     #apellidoPaterno="ngModel">  
+                     <div class="form-control-feedback" *ngIf="apellidoPaterno.errors?.required">
+                        <span >Este campo es requerido</span> 
+                     </div>
+                     <div  class="form-control-feedback" *ngIf="apellidoPaterno.errors?.maxlength">
+                        <span>El maximo de caracteres requeridos 15</span> 
+                     </div>
+                     <div  class="form-control-feedback" *ngIf="apellidoPaterno.errors?.pattern">
+                        <span>Solo se permiten letras Mayusculas y Minusculas</span> 
+                     </div>
+            </div>
+        </div>
+        <div class="form-group row" [ngClass]= "{'has-danger':
+        (apellidoMaterno.errors?.required || apellidoMaterno.errors?.maxlength || apellidoMaterno.errors?.pattern) && apellidoMaterno.touched}">
+                 <label class="col-2 col-form-label">Apellido Materno</label>
+            <div class="col-8">
+      
+              <input [(ngModel)] = "perfil.apellidoMaterno"
+                     class="form-control"
+                     type="text"
+                     placeholder="Apellido Materno"
+                     name="apellidoMaterno"
+                     ng-model
+                     maxlength="15"
+                     pattern ="^[a-zA-Z\s]*$"                                          
+                     required  
+                     #apellidoMaterno="ngModel">  
+                     <div class="form-control-feedback" *ngIf="apellidoMaterno.errors?.required">
+                        <span >Este campo es requerido</span> 
+                     </div>
+                     <div  class="form-control-feedback" *ngIf="apellidoMaterno.errors?.maxlength">
+                        <span>El maximo de caracteres requeridos 15</span> 
+                     </div>
+                     <div  class="form-control-feedback" *ngIf="apellidoMaterno.errors?.pattern">
+                        <span>Solo se permiten letras Mayusculas y Minusculas</span> 
+                     </div>
+            </div>
+        </div>
+        <div class="form-group row"  [ngClass]= "{'has-danger':
+        (edad.errors?.required || edad.errors?.maxlength || edad.errors?.pattern) && edad.touched}">
+                <label class="col-2 col-form-label">Edad</label>
+                <div class="col-8">
+          
+                  <input [(ngModel)] = "perfil.edad"
+                         class="form-control"
+                         type="text"
+                         placeholder="Edad"
+                         name="edad"
+                         ng-model
+                         maxlength="3"
+                         pattern="^\d*$"
+                         required 
+                         #edad="ngModel">
+                         <div class="form-control-feedback" *ngIf="edad.errors?.required">
+                            <span >Este campo es requerido</span> 
+                         </div>
+                         <div  class="form-control-feedback" *ngIf="edad.errors?.maxlength">
+                            <span>El maximo de caracteres requeridos 3</span> 
+                         </div>
+                         <div  class="form-control-feedback" *ngIf="edad.errors?.pattern">
+                            <span>Solo se permiten numeros mayores a 12</span> 
+                         </div> 
+                </div>
+            </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Fecha Nacimiento</label>
+            <div class="col-md-8">
+        
+              <input [(ngModel)] = "perfil.fechaNacimiento"
+                     class="form-control" 
+                     id="fechaNacimiento"
+                     name="fechaNacimiento"
+                     placeholder="Fecha Nacimiento"
+                     type="date"
+                >
+            </div>
+        </div>
+        <div class="form-group">
+              <button [disabled] = "!forma.valid"
+                      type="submit" class="btn btn-outline-primary">
+                Actualizar
+              </button>
+          </div>
+     </form>
+  </div>
+</div>
+
+
+
+
+
+ 
+

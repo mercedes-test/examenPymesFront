@@ -1,0 +1,43 @@
+<h1>Lista Perfiles</h1>
+
+<div class="row" >
+    <button [routerLink] ="['perfiles']"
+    class ="btn btn-outline-danger">
+    Regresar
+    </button>
+
+</div>
+<br>
+
+<div class="row" animated fadeIn fast *ngIf="perfil">
+    <div class="col-md-12">
+        <div class="table table-striped">
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Foto:</th>                        
+                        <th>Nombre:</th>
+                        <th>Apellido Paterno:</th>
+                        <th>Apellido Materno:</th>
+                        <th>Fecha Nacimiento:</th>
+                        <th>Edad:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img [src] = perfil.foto class="img-thumbnail"></td>
+                        <td>{{ perfil.nombre }}</td>
+                        <td>{{ perfil.apellidoPaterno }}</td>
+                        <td>{{ perfil.apellidoMaterno }}</td>
+                        <td>{{ perfil.fecha }}</td>    
+                        <td>{{ perfil.edad }}</td>
+                        
+                    </tr>   
+                </tbody>    
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
